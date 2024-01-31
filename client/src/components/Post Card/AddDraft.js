@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import React , { useState } from 'react'
+import Sidebar from '../Sidebar/Sidebar'
 
-const CreatePostCard = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+function AddDraft() {
+    const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -14,13 +14,11 @@ const CreatePostCard = () => {
       reader.readAsDataURL(file);
     }
   };
-
-  return (
-    <>
-    <div className="flex flex-col lg:flex-row">
-    <Sidebar/>
-    
-    <div className="max-w-md mx-auto p-4 space-y-4">
+    return (
+        <div>
+            <div className="flex flex-col lg:flex-row">
+                {/* <Sidebar /> */}
+                <div className="max-w-md mx-auto p-4 space-y-4">
       {/* Image Input */}
       <div>
         <label
@@ -60,20 +58,6 @@ const CreatePostCard = () => {
           cols="50"
           className="mt-1 p-2 border rounded-md w-full"
         ></textarea>
-      </div>
-
-      <div>
-        <label
-          htmlFor="dateInput"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Schedule Post on:
-        </label>
-        <input
-          type="date"
-          id="dateInput"
-          className="mt-1 p-2 border rounded-md w-full"
-        />
       </div>
 
       {/* Post On and Checkboxes in column */}
@@ -133,12 +117,12 @@ const CreatePostCard = () => {
 
       {/* Post Button */}
       <button className="bg-blue-500 text-white p-3 rounded-md w-1/2 items-center">
-        Post
+        Save as Draft
       </button>
     </div>
-    </div>
-    </>
-  );
-};
+            </div>
+        </div>
+    )
+}
 
-export default CreatePostCard;
+export default AddDraft
