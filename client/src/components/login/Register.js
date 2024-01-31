@@ -72,7 +72,7 @@ function Register() {
           {/* <HeaderImage src={Logo} alt='logo' /> */}
         </Header>
         <LeftContainer>
-          <LoginImage autoPlay src={loginImage} alt="illustration" />
+          <LoginImage src={loginImage} alt="illustration" />
         </LeftContainer>
         <div>
             {login ? <Login setLogin={setLogin}/> : <SignUp setLogin={setLogin}/>}
