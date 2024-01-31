@@ -2,7 +2,7 @@ import React from 'react'
 
 function Register() {
   return (
-    <div>Register</div>
+    <div className='text-orange-500'>Register</div>
   )
 }
 
