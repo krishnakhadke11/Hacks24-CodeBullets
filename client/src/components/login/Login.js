@@ -44,14 +44,19 @@ const SignInText = styled(Typography)({
     width : 300
   });
 
-function Login({ setLogin }) {
+function Login({ toggle, handleClose }) {
 
     const [showPassword, setShowPassword] = useState(false);
   
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
     const onSignUpClick = () => {
-        setLogin(false);
+        toggle();
+    }
+
+    const loginClick = (e) => {
+        e.preventDefault();
+        handleClose();
     }
 
   return (
@@ -73,7 +78,7 @@ function Login({ setLogin }) {
             />
         </PasswordInput>
         {/* <Typography variant='caption'>Forget Password?</Typography> */}
-        <SignUpButton color='secondary' variant="contained">Login</SignUpButton>
+        <SignUpButton onClick={(e) => loginClick(e)} color='secondary' variant="contained">Login</SignUpButton>
         <SignInText>New Here? <span onClick={onSignUpClick}>Create a new account</span></SignInText> 
     </Container>
   )

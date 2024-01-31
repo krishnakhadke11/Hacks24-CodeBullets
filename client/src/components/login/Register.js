@@ -4,26 +4,25 @@ import {styled, Box} from '@mui/material'
 
 import Login from './Login'
 import SignUp from './SignUp'
-// import BackgroundImage from '../../images/sun-tornado.png'
-// import Logo from '../../images/inchat_logo.png'
+import { Dialog } from '@mui/material'
 import loginImage from '../../images/loginPhoto.png'
 
 
-const Container = styled(Box)`
- height : 100vh;
- width : 100vw;
- display : flex;
- justify-content: center;
- align-items : center;
- background-size : cover;
-`
+// const Container = styled(Box)`
+//  height : 100vh;
+//  width : 100vw;
+//  display : flex;
+//  justify-content: center;
+//  align-items : center;
+//  background-size : cover;
+// `
 const FormContainer = styled(Box)`
   height : 600px;
   width : 900px;
   display: grid;
   position : relative;
   background-color : #FBFAFF;
-  border-radius : 20px;
+//   border-radius : 20px;
 -webkit-box-shadow: 8px 8px 20px -3px rgba(4,4,4,1);
 -moz-box-shadow: 8px 8px 20px -3px rgba(4,4,4,1);
 box-shadow: 8px 8px 20px -3px rgba(4,4,4,1);
@@ -54,31 +53,47 @@ const LoginImage = styled('img')`
   display: block;
   margin-left: auto;
   margin-right: auto;
-//   margin-top: -80px;
-//   transform: scale(1.5);
   height : 400px;
   width : 300px;
   object-fit: cover;
 `
 
-function Register() {
+function Register({ open, setOpen, login }) {
  
-    const[login, setLogin] = useState(true);
+    const [loginaccount, toggleAccount] = useState(login);
+
+  const handleClose = () => {
+    setOpen(false);
+    toggleAccount(true);
+  };
+
+  const toggle = () => {
+    toggleAccount(!loginaccount);
+  };
+
 
   return (
-    <Container>
-      <FormContainer>
-        <Header>LOGO
-          {/* <HeaderImage src={Logo} alt='logo' /> */}
-        </Header>
-        <LeftContainer>
-          <LoginImage src={loginImage} alt="illustration" />
-        </LeftContainer>
-        <div>
-            {login ? <Login setLogin={setLogin}/> : <SignUp setLogin={setLogin}/>}
-        </div>
-      </FormContainer>
-    </Container>
+    <div>
+        <Dialog
+        open={open}
+        onClose={handleClose}
+        PaperProps={{ sx: { maxWidth: "unset" } }}
+        >
+            {/* <Container> */}
+                <FormContainer>
+                    <Header>LOGO
+                    {/* <HeaderImage src={Logo} alt='logo' /> */}
+                    </Header>
+                    <LeftContainer>
+                    <LoginImage src={loginImage} alt="illustration" />
+                    </LeftContainer>
+                    <div>
+                        {loginaccount ? <Login toggle={toggle} handleClose={handleClose}/> : <SignUp toggle={toggle} handleClose={handleClose}/>}
+                    </div>
+                </FormContainer>
+            {/* </Container> */}
+            </Dialog>
+    </div>
   )
 }
 

@@ -43,7 +43,7 @@ const SignInText = styled(Typography)({
     width : 300
   });
 
-function SignUp({ setLogin }) {
+function SignUp({ toggle, handleClose }) {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -52,7 +52,12 @@ function SignUp({ setLogin }) {
     const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show);
 
     const onSignUpClick = () => {
-        setLogin(true)
+        toggle()
+    }
+
+    const signupClick = (e) => {
+        e.preventDefault();
+        handleClose();
     }
 
   return (
@@ -89,7 +94,7 @@ function SignUp({ setLogin }) {
             }
             />
         </PasswordInput>
-        <SignUpButton color='secondary' variant="contained">Sign Up</SignUpButton>
+        <SignUpButton onClick={(e) => signupClick(e)} color='secondary' variant="contained">Sign Up</SignUpButton>
         <SignInText>Already have an account? <span onClick={onSignUpClick}>Sign In</span></SignInText> 
     </Container>
   )
