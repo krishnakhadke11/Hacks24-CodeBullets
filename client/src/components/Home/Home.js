@@ -106,8 +106,8 @@ function Home() {
                 </h1>
                 <br />
                 <div className='flex space-x-2'>
-                  <Card posts="Post1" />
-                  <Card posts="Post2" />
+                  <Card posts = "Post1"/>
+                  <Card posts = "Post2"/>
                 </div>
               </div>
             </div>
@@ -115,7 +115,7 @@ function Home() {
           </div>
         </div>
 
-
+        
       </div>
     </div>
   )
