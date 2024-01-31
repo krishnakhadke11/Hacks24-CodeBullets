@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '../Card/Card'
+import AddIcon from '@mui/icons-material/Add';
+import CreatePostCard from '../Post Card/CreatePostCard';
 
 function Home() {
+
+  const [open, setOpen] = useState(false);
+
+  const openDialog = () => {
+    setOpen(true);
+}
+
   return (
     <div>
       <div className="flex flex-col lg:flex-row">
@@ -9,33 +18,21 @@ function Home() {
         <nav className="scroll-bar-show ml-8 flex flex-none flex-col overflow-y-auto px-2 py-6 hidden sm:flex">
           <ul className="space-y-3">
             <a
-              className="block select-none rounded-md p-[10px] text-sm text-gray-700 hover:bg-gray-50 bg-gray-100 font-medium"
-              href="/dashboard"
+              className="block select-none cursor-pointer rounded-md p-[10px] text-sm text-gray-700 hover:bg-gray-50 bg-gray-100 font-medium"
+              onClick={openDialog}
             >
               <li className="flex w-full items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="h-5 w-5">
-                    <svg
-                      width="22"
-                      height="21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 20v-7.4c0-.56 0-.84.109-1.054a1 1 0 0 1 .437-.437C8.76 11 9.04 11 9.6 11h2.8c.56 0 .84 0 1.054.109a1 1 0 0 1 .437.437C14 11.76 14 12.04 14 12.6V20M1 8.5l9.04-6.78c.344-.258.516-.387.705-.437a1 1 0 0 1 .51 0c.189.05.36.179.705.437L21 8.5M3 7v9.8c0 1.12 0 1.68.218 2.108a2 2 0 0 0 .874.874C4.52 20 5.08 20 6.2 20h9.6c1.12 0 1.68 0 2.108-.218a2 2 0 0 0 .874-.874C19 18.48 19 17.92 19 16.8V7l-6.08-4.56c-.688-.516-1.033-.775-1.41-.874a2 2 0 0 0-1.02 0c-.377.1-.721.358-1.41.874L3 7Z"
-                        stroke="#344054"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </svg>
+                    <AddIcon/>
                   </div>
                   <div className="flex w-full items-center justify-between">
-                    <span>Create</span>
+                    <span>Create new post</span>
                   </div>
                 </div>
               </li>
             </a>
+            <CreatePostCard open={open} setOpen={setOpen}/>
             <a
               className="block select-none rounded-md p-[10px] text-sm text-gray-700 hover:bg-gray-50
           "
